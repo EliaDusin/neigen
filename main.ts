@@ -21,6 +21,7 @@ basic.forever(function () {
             Apfel.set(LedSpriteProperty.X, randint(0, 5))
             Apfel.set(LedSpriteProperty.Y, randint(0, 5))
             Punkte += 1
+            Zeit += -2
         }
     }
 })
@@ -28,6 +29,15 @@ basic.forever(function () {
     basic.pause(1000)
     Zeit += 1
     if (Zeit == 60) {
+        Spieler.delete()
+        Apfel.delete()
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            `)
         basic.showString("Time´s up! Score:")
         basic.showNumber(Punkte)
         game.gameOver()
